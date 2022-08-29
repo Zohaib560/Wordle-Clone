@@ -2,7 +2,7 @@ import './App.css';
 import Board from "./components/Board";
 import Keyboard from "./components/Keyboard";
 import { useState, useEffect, createContext } from 'react';
-import { emptyBoard, generateWordSet } from './components/WordleUtility';
+import { emptyBoard, generateWordData } from './components/WordleUtility';
 
 export const AppContext = createContext();
 
@@ -16,10 +16,10 @@ function App() {
   const [correctWord, setCorrectWord] = useState("");
 
   useEffect(() => {
-    generateWordSet().then((words) => {
-      setWordSet(words.wordSet);
-      setCorrectWord(words.todaysWord);
-    });
+    generateWordData().then((data) => {
+      setWordSet(data.wordSet)
+      setCorrectWord(data.todaysWord)
+    })
   }, [])
 
   const onEnter = () => {
